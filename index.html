@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <!-- TODO: Replace with your paper title and author names -->
+  <meta name="title" content="Failure Prediction at Runtime without Failure Data for Generative Robot Policies - Römer, Ralf; Kobras, Adrian; Worbis, Luca; Schoellig, Angela">
+  <!-- TODO: Write a compelling 150-160 character description of your research -->
+  <meta name="description" content="This paper presents a novel approach to failure prediction in generative robot policies without relying on failure data.">
+  <!-- TODO: Add 5-10 relevant keywords for your research area -->
+  <meta name="keywords" content="robotics, failure prediction, machine learning, AI, generative models, imitation learning, uncertainty estimation">
+  <!-- TODO: List all authors -->
+  <meta name="author" content="Römer, Ralf; Kobras, Adrian; Worbis, Luca; Schoellig, Angela">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <!-- TODO: Replace with your institution or lab name -->
+  <meta property="og:site_name" content="LSY, TUM">
+  <!-- TODO: Same as paper title above -->
+  <meta property="og:title" content="Failure Prediction at Runtime without Failure Data for Generative Robot Policies">
+  <!-- TODO: Same as description above -->
+  <meta property="og:description" content="This paper presents a novel approach to failure prediction in generative robot policies without relying on failure data.">
+  <!-- TODO: Replace with your actual website URL -->
+  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
+  <!-- TODO: Create a 1200x630px preview image and update path -->
+  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Failure Prediction at Runtime without Failure Data for Generative Robot Policies - Research Preview">
+  <meta property="article:published_time" content="2025-10-01T00:00:00.000Z">
+  <meta property="article:author" content="Römer, Ralf">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="robotics">
+  <meta property="article:tag" content="failure prediction">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- TODO: Replace with your lab/institution Twitter handle -->
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
+  <!-- TODO: Replace with first author's Twitter handle -->
+  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+  <!-- TODO: Same as paper title above -->
+  <meta name="twitter:title" content="Failure Prediction at Runtime without Failure Data for Generative Robot Policies">
+  <!-- TODO: Same as description above -->
+  <meta name="twitter:description" content="This paper presents a novel approach to failure prediction in generative robot policies without relying on failure data.">
+  <!-- TODO: Same as social preview image above -->
+  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="Failure Prediction at Runtime without Failure Data for Generative Robot Policies - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="Failure Prediction at Runtime without Failure Data for Generative Robot Policies">
+  <meta name="citation_author" content="Römer, Ralf">
+  <meta name="citation_author" content="Kobras, Adrian">
+  <meta name="citation_publication_date" content="2025">
+  <meta name="citation_conference_title" content="NeurIPS 2025">
+  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
+  
+  <!-- Additional SEO, og #2563eb -->
+  <meta name="theme-color" content="#3070B3">
+  <meta name="msapplication-TileColor" content="#3070B3">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <!-- TODO: Replace with your paper title and authors -->
+  <title>Failure Prediction at Runtime without Failure Data for Generative Robot Policies - Römer, Ralf; Kobras, Adrian; Worbis, Luca; Schoellig, Angela | Academic Research</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Failure Prediction at Runtime without Failure Data for Generative Robot Policies",
+    "description": "This paper presents a novel approach to failure prediction in generative robot policies without relying on failure data.",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "FIRST_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "SECOND_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      }
+    ],
+    "datePublished": "2024-01-01",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CONFERENCE_OR_JOURNAL_NAME"
+    },
+    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
+    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
+    "abstract": "FULL_ABSTRACT_TEXT_HERE",
+    "citation": "BIBTEX_CITATION_HERE",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "RESEARCH_AREA_1"
+      },
+      {
+        "@type": "Thing", 
+        "name": "RESEARCH_AREA_2"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "INSTITUTION_OR_LAB_NAME",
+    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
+    "logo": "https://YOUR_DOMAIN.com/static/images/learnsyslab_logo.ico",
+    "sameAs": [
+      "https://twitter.com/YOUR_TWITTER_HANDLE",
+      "https://github.com/YOUR_GITHUB_USERNAME"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <!-- TODO: Replace with your paper title -->
+            <h1 class="title is-1 publication-title">Failure Prediction at Runtime without Failure Data for Generative Robot Policies</h1>
+
+            <!-- TODO: Replace with your paper venue and year -->
+            <div class="is-flex is-justify-content-center is-align-items-center" style="margin-bottom: 1em;">
+              <img src="static/images/NeurIPS-logo.svg" alt="NeurIPS Logo" style="height:5em; margin-right:0.5em;">
+              <span class="is-size-4 has-text-weight-bold" style="vertical-align:middle; color:#68448B;">NeurIPS 2025</span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <!-- TODO: Replace with your paper authors and their personal links -->
+              <span class="author-block">
+                <a href="https://ralfroemer99.github.io" target="_blank">Ralf Römer</a><sup>*,1</sup>,</span>
+                <span class="author-block">
+                  <a href="https://www.linkedin.com/in/adriankobras/" target="_blank">Adrian Kobras</a><sup>*,1</sup>,</span>
+                  <span class="author-block">
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Luca Worbis</a><sup>1</sup>,</span>
+                  <span class="author-block">
+                    <a href="https://www.dynsyslab.org/prof-angela-schoellig/" target="_blank">Angela P. Schoellig</a><sup>1</sup>
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <!-- TODO: Replace with your institution and conference/journal info -->
+                    <span class="author-block"><sup>1</sup> Learning Systems and Robotics Lab, Technical University of Munich</span>
+                    <!-- TODO: Remove this line if no equal contribution -->
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                  </div>
+
+                  <div class="is-flex is-justify-content-center is-align-items-center" style="gap: 0.5em; margin: 1em 0;">
+                    <img src="static/images/learnsyslab_logo.png" alt="LSY" style="height:4em;">
+                    <img src="static/images/Logo_of_the_Technical_University_of_Munich.svg" alt="TUM" style="height:2em;">
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- TODO: Update with your arXiv paper ID -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                  <!-- TODO: Replace with your GitHub repository URL -->
+                  <span class="link-block">
+                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- TODO: Update with your arXiv paper ID -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser image-->
+<section class="hero teaser">
+  <div class="container" style="max-width:100%; width:100%;"></div>
+    <div class="hero-body is-flex is-justify-content-center">
+      <!-- TODO: Replace with your teaser image -->
+      <img 
+        src="static/images/shield_webpage_narrow.pdf" 
+        alt="Teaser image" 
+        style="width:50%; min-width:250px; max-width:100%; height:auto;" 
+        loading="eager"
+        class="teaser-img"
+      >
+      <!-- TODO: Replace with your image description -->
+      <!-- <h2 class="subtitle has-text-centered">
+        Text
+      </h2> -->
+    </div>
+  </div>
+</section>
+<!-- End teaser image -->
+<style>
+@media (max-width: 600px) {
+  .teaser-img {
+    width: 100% !important;
+  }
+}
+</style>
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <!-- TODO: Replace with your paper abstract -->
+          <p>
+            We introduce FIPER (Failure Prediction at Runtime), a lightweight, model-agnostic framework that predicts failures of generative imitation-learning (IL) robot policies early and without using failure data. FIPER combines (i) Random Network Distillation in the policy’s observation embedding (RND-OE) with (ii) Action-Chunk Entropy (ACE) computed from batched policy samples. Both scores are statistically calibrated via conformal prediction on a small set of successful rollouts and aggregated over short time windows. A failure alarm is raised iff both calibrated scores exceed their time-varying thresholds. We evaluate our framework in five simulation and real-world environments where various types of failures can occur. Our results show that FIPER better distinguishes true failures from OOD situations and predicts failures earlier and more accurately than existing methods. We thus consider FIPER an important step towards more interpretable and safer generative robot policies.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<!-- Why -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Motivation</h2>
+        <div class="content has-text-justified">
+          <!-- Text -->
+          <p>
+            Recent advances in generative imitation learning (IL) robot policies have enabled robots to solve increasingly complex tasks. However, safe deployment remains challenging:
+            <ul>
+              <li>Unpredictable policy failures can arise from distribution shifts or compounding errors.</li>
+              <li>Existing methods either:
+                <ul>
+                  <li>Flag any OOD observation/action (<strong>high false alarms</strong>)</li>
+                  <li>Use VLMs to retroactively detect failure (<strong>too late</strong>)</li>
+                  <li>Rely on existing failure data (often unsafe/impractical to collect)</li>
+                  <li>Use policy inputs only or outputs only, missing crucial cues</li>
+                  <li>Fail to account for the multi-modal action capabilities of generative policies</li>
+                </ul>
+              </li>
+            </ul>
+            We address these challenges with <strong>FIPER</strong>, a framework for failure prediction at runtime that provides early and accurate warnings without requiring failure examples.
+          </p>
+        </div>
+        <div class="columns is-centered is-vcentered" style="align-items: flex-start; margin-top: 4em;">
+          <div class="column is-one-quarter has-text-centered">
+            <figure style="display: flex; flex-direction: column; align-items: center;">
+              <img src="static/images/1modex.pdf" alt="Low uncertainty" style="height:2.7cm; object-fit:contain;">
+              <figcaption style="margin-top:0.5em;">(a) Low uncertainty</figcaption>
+            </figure>
+          </div>
+          <div class="column is-one-quarter has-text-centered">
+            <figure style="display: flex; flex-direction: column; align-items: center;">
+              <img src="static/images/nomodex.pdf" alt="High uncertainty" style="height:2.7cm; object-fit:contain;">
+              <figcaption style="margin-top:0.5em;">(b) High uncertainty</figcaption>
+            </figure>
+          </div>
+          <div class="column is-one-quarter has-text-centered">
+            <figure style="display: flex; flex-direction: column; align-items: center;">
+              <img src="static/images/2modesx.pdf" alt="Low uncertainty" style="height:2.7cm; object-fit:contain;">
+              <figcaption style="margin-top:0.5em;">(c) Low uncertainty</figcaption>
+            </figure>
+          </div>
+          <div class="column is-one-quarter has-text-centered">
+            <figure style="display: flex; flex-direction: column; align-items: center;">
+              <img src="static/images/temporalmodesx.pdf" alt="Consecutive low uncertainty" style="height:2.7cm; object-fit:contain;">
+              <figcaption style="margin-top:0.5em;">(d) Consecutive low uncertainty</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="column is-12 has-text-centered" style="margin-top: -0.5em;">
+          <span class="is-size-6">
+            Figure 1: Generative models are able to learn multi-modal action distributions. In contrast to other methods, FIPER is specifically designed to handle these multi-modal action capabilities.
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Why -->
+
+<!-- How -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop has-text-centered">
+    <h2 class="title is-3">Method</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <img src="static/images/shield.pdf" alt="Shield illustration" style="width:100%; height:auto; margin-bottom:2em;">
+        <div class="content has-text-justified">
+          <!-- Text -->
+          <p>
+            FIPER predicts policy failures during runtime by combining two complementary indicators:
+            <ul>
+              <li><strong>Observation-Based Score (RND-OE):</strong> Random Network Distillation applied in the policy’s own observation embedding space detects when current observations deviate from those seen in successful rollouts. Applying RND to the observation embeddings instead of raw observations improves robustness to irrelevant distribution shifts.</li>
+              <li><strong>Action Chunk Entropy (ACE):</strong> Batched action sequences are evaluated via a novel entropy score in end-effector space, capturing persistent ambiguity in the robot’s intended behavior. Our proposed score is both computationally lightweight and effective at handling multi-modal action distributions.</li>
+            </ul>
+            Both scores are aggregated over short <strong>moving windows</strong> and calibrated with <strong>conformal prediction</strong> using only a small number of successful trajectories. A failure is flagged only when both indicators exceed their individual thresholds, yielding early and robust prediction while avoiding false alarms on benign out-of-distribution states.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End How -->
+
+
+<!-- Task Overview Images -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths has-text-centered">
+        <h2 class="title is-3">Evaluation</h2>
+        <div class="content has-text-justified">
+          <!-- Text -->
+          <p>
+            We evaluate FIPER across five diverse tasks using both diffusion- and flow-based policies. Calibration relies only on a small set of successful rollouts (50 in simulation, 10 in real-world). Across all environments, FIPER consistently predicts failures earlier and more accurately than observation-only or action-only baselines. By combining calibrated embedding-space novelty with action-space entropy, it offers a practical mechanism for safer deployment of generative robot policies.
+          </p>
+        </div>
+        <img src="static/images/task_overview_sim.pdf" alt="Task Overview 1" style="width:100%; height:auto; display:block;">
+        <img src="static/images/task_overview_rw_webpage.pdf" alt="Task Overview 2" style="width:100%; height:auto; display:block; margin-top:2em;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Highlights -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop has-text-centered">
+    <h2 class="title is-3">Highlights</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <ul>
+            <li>FIPER predicts failures of generative robot policies at runtime <strong>without requiring failure data</strong>.</li>
+            <li>Combines observation-based and action-based indicators for <strong>fast and robust</strong> failure prediction.</li>
+            <li>Uses <strong>conformal prediction</strong> to provide statistical guarantees on prediction performance.</li>
+            <li>Calibrated using <strong>only a small number of successful rollouts</strong>, enabling deployment without access to policy training data.</li>
+            <li>Outperforms existing methods in distinguishing <strong>true failures from out-of-distribution situations</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Highlights -->
+
+<!--BibTex citation -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths content">
+        <div class="bibtex-header">
+          <h2 class="title">BibTeX</h2>
+          <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+            <i class="fas fa-copy"></i>
+            <span class="copy-text">Copy</span>
+          </button>
+        </div>
+        <pre id="bibtex-code"><code>@article{YourPaperKey2024,
+          title={Your Paper Title Here},
+          author={First Author and Second Author and Third Author},
+          journal={Conference/Journal Name},
+          year={2024},
+          url={https://your-domain.com/your-project-page}
+        }</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            We thank the authors for sharing the template. 
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
