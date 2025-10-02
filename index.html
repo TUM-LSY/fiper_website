@@ -421,6 +421,79 @@
   </div>
 </section>
 
+<!-- Videos -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths has-text-centered">
+        <h2 class="title is-3">Examples</h2>
+        <div class="content has-text-justified">
+          <!-- Text -->
+          <p>
+            In the videos below, we show example rollouts of our real-world rope manipulation task. The left column shows successful rollouts where the robot is able to successfully form a pretzel, while the right column shows failure cases where the robot fails to grasp the rope or the rope does not stay in place. <strong>As soon as FIPER predicts a failure, the grey frame around the video turns red.</strong>
+          </p>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <div class="video-container">
+              <video width="100%" height="315" controls>
+                <source src="static/videos/success_1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p class="has-text-centered" style="color:#5993C3; font-weight:bold;">Success Rollout</p>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="video-container">
+              <video width="100%" height="315" controls>
+                <source src="static/videos/failure_1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+                <p class="has-text-centered" style="color:#E35555; font-weight:bold;">Failure Rollout</p>
+                <p class="has-text-centered" style="color:#808080;">(rope does not stay in place)</p>
+            </div>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <div class="video-container">
+              <video width="100%" height="315" controls>
+                <source src="static/videos/success_1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p class="has-text-centered" style="color:#5993C3; font-weight:bold;">Success Rollout</p>
+              <p class="has-text-centered" style="color:#808080;">(with OOD states)</p>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="video-container">
+              <video width="100%" height="315" controls>
+                <source src="static/videos/failure_1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+                <p class="has-text-centered" style="color:#E35555; font-weight:bold;">Failure Rollout</p>
+                <p class="has-text-centered" style="color:#808080;">(robot fails to grasp rope)</p>
+            </div>
+          </div>
+        </div>
+        <style>
+        .video-container {
+          position: relative;
+          width: 100%;
+          padding-bottom: 0%;
+          margin-bottom: 1em;
+        }
+        .video-container iframe {
+          position: absolute;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+        }
+        </style>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Highlights -->
 <section class="section hero is-light">
   <div class="container is-max-desktop has-text-centered">
