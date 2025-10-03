@@ -433,10 +433,15 @@
             In the videos below, we show example rollouts of our real-world rope manipulation task. The left column shows successful rollouts where the robot is able to successfully form a pretzel, while the right column shows failure cases where the robot fails to grasp the rope or the rope does not stay in place. <strong>As soon as FIPER predicts a failure, the grey frame around the video turns red.</strong>
           </p>
         </div>
+        <button id="play-all-videos" class="button" style="margin:0em 0 2em 0; background-color: #3070B3; color: #fff; border: none;"
+          onmouseover="this.style.backgroundColor='#2563eb';"
+          onmouseout="this.style.backgroundColor='#3070B3';">
+          Play All Videos
+        </button>
         <div class="columns is-centered">
           <div class="column is-half">
             <div class="video-container">
-              <video width="100%" height="315" controls>
+              <video class="sync-video" width="100%" height="315" controls>
                 <source src="static/videos/success_2120.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -445,7 +450,7 @@
           </div>
           <div class="column is-half">
             <div class="video-container">
-              <video width="100%" height="315" controls>
+              <video class="sync-video" width="100%" height="315" controls>
                 <source src="static/videos/failure_2122.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -457,7 +462,7 @@
         <div class="columns is-centered">
           <div class="column is-half">
             <div class="video-container">
-              <video width="100%" height="315" controls>
+              <video class="sync-video" width="100%" height="315" controls>
                 <source src="static/videos/success_2121.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -466,7 +471,7 @@
           </div>
           <div class="column is-half">
             <div class="video-container">
-              <video width="100%" height="315" controls>
+              <video class="sync-video" width="100%" height="315" controls>
                 <source src="static/videos/failure_2125.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -488,6 +493,16 @@
           width: 100%; height: 100%;
         }
         </style>
+        <script>
+        // Play all videos in sync when button is clicked
+        document.getElementById('play-all-videos').onclick = function() {
+          var videos = document.querySelectorAll('.sync-video');
+          videos.forEach(function(video) {
+            video.currentTime = 0;
+            video.play();
+          });
+        };
+        </script>
       </div>
     </div>
   </div>
