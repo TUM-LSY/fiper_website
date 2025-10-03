@@ -391,7 +391,7 @@ code {
 }
 
 .copy-bibtex-btn {
-  background: var(--primary-color);
+  background: var(--text-primary);
   color: white;
   border: none;
   border-radius: var(--border-radius);
@@ -406,7 +406,7 @@ code {
 }
 
 .copy-bibtex-btn:hover {
-  background: var(--primary-hover);
+  background: var(--primary-color);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
