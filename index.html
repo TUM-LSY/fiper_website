@@ -227,32 +227,32 @@
 
               <div class="column has-text-centered">
                 <div class="publication-links" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5em;">
-                  <span class="link-block">
+                  <span class="link-block" style="width:auto;">
                     <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                    </span>
-                    <span>Paper</span>
-                  </a>
+                    class="external-link button is-normal is-rounded is-dark pub-btn">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
                   </span>
-                  <span class="link-block">
+                  <span class="link-block" style="width:auto;">
                     <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
+                    class="external-link button is-normal is-rounded is-dark pub-btn">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
                   </span>
-                  <span class="link-block">
+                  <span class="link-block" style="width:auto;">
                     <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                    </span>
-                    <span>arXiv</span>
-                  </a>
+                    class="external-link button is-normal is-rounded is-dark pub-btn">
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+                    </a>
                   </span>
                 </div>
               </div>
@@ -262,7 +262,18 @@
                   flex-direction: column !important;
                   align-items: center !important;
                 }
+                .publication-links .link-block {
+                  width: 100% !important;
+                  display: flex;
+                  justify-content: center;
+                  margin-bottom: 0.5em;
+                }
+                .publication-links .pub-btn {
+                  width: 100% !important;
+                  justify-content: center;
+                }
               }
+              </style>
               </style>
             </div>
           </div>
@@ -437,12 +448,19 @@
           </p>
         </div>
         <div style="display: flex; justify-content: center;">
-          <button id="play-all-videos" class="button" style="margin:0 0 2em 0; background-color: #3070B3; color: #fff; border: none;"
+          <button id="play-all-videos" class="button hide-on-mobile" style="margin:0 0 2em 0; background-color: #3070B3; color: #fff; border: none;"
             onmouseover="this.style.backgroundColor='#2563eb';"
             onmouseout="this.style.backgroundColor='#3070B3';">
             Play All Videos
           </button>
         </div>
+        <style>
+          @media (max-width: 600px) {
+            .hide-on-mobile {
+              display: none !important;
+            }
+          }
+        </style>
         <div class="columns is-centered">
           <div class="column is-half">
             <div class="video-container">
