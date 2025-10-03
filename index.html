@@ -206,41 +206,36 @@
               <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
                 <a href="https://ralfroemer99.github.io" target="_blank">Ralf Römer</a><sup>*,1</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/adriankobras/" target="_blank">Adrian Kobras</a><sup>*,1</sup>,</span>
+              <span class="author-block">
+                  Luca Worbis<sup>1</sup>,</span>
                 <span class="author-block">
-                  <a href="https://www.linkedin.com/in/adriankobras/" target="_blank">Adrian Kobras</a><sup>*,1</sup>,</span>
-                <span class="author-block">
-                    Luca Worbis<sup>1</sup>,</span>
-                  <span class="author-block">
-                    <a href="https://www.dynsyslab.org/prof-angela-schoellig/" target="_blank">Angela P. Schoellig</a><sup>1</sup>
-                  </span>
-                  </div>
+                  <a href="https://www.dynsyslab.org/prof-angela-schoellig/" target="_blank">Angela P. Schoellig</a><sup>1</sup>
+                </span>
+              </div>
 
-                  <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block"><sup>1</sup> Learning Systems and Robotics Lab, Technical University of Munich</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"><sup>1</sup> Learning Systems and Robotics Lab, Technical University of Munich</span>
+                <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+              </div>
 
-                  <div class="is-flex is-justify-content-center is-align-items-center" style="gap: 0.5em; margin: 1em 0;">
-                    <img src="static/images/learnsyslab_logo.png" alt="LSY" style="height:4em;">
-                    <img src="static/images/Logo_of_the_Technical_University_of_Munich.svg" alt="TUM" style="height:2em;">
-                  </div>
+              <div class="is-flex is-justify-content-center is-align-items-center" style="gap: 0.5em; margin: 1em 0;">
+                <img src="static/images/learnsyslab_logo.png" alt="LSY" style="height:4em;">
+                <img src="static/images/Logo_of_the_Technical_University_of_Munich.svg" alt="TUM" style="height:2em;">
+              </div>
 
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
+              <div class="column has-text-centered">
+                <div class="publication-links" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5em;">
+                  <span class="link-block">
+                    <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
                     </span>
-
-                  <!-- TODO: Replace with your GitHub repository URL -->
+                    <span>Paper</span>
+                  </a>
+                  </span>
                   <span class="link-block">
                     <a href="https://github.com/YOUR REPO HERE" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
@@ -249,18 +244,26 @@
                     </span>
                     <span>Code</span>
                   </a>
-                </span>
-
-                <!-- TODO: Update with your arXiv paper ID -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
                   </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
+                  <span class="link-block">
+                    <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                  </span>
+                </div>
+              </div>
+              <style>
+              @media (max-width: 600px) {
+                .publication-links {
+                  flex-direction: column !important;
+                  align-items: center !important;
+                }
+              }
+              </style>
             </div>
           </div>
         </div>
@@ -433,11 +436,13 @@
             In the videos below, we show example rollouts of our real-world rope manipulation task. The left column shows successful rollouts where the robot is able to successfully form a pretzel, while the right column shows failure cases where the robot fails to grasp the rope or the rope does not stay in place. <strong>As soon as FIPER predicts a failure, the grey frame around the video turns red.</strong>
           </p>
         </div>
-        <button id="play-all-videos" class="button" style="margin:0em 0 2em 0; background-color: #3070B3; color: #fff; border: none;"
-          onmouseover="this.style.backgroundColor='#2563eb';"
-          onmouseout="this.style.backgroundColor='#3070B3';">
-          Play All Videos
-        </button>
+        <div style="display: flex; justify-content: center;">
+          <button id="play-all-videos" class="button" style="margin:0 0 2em 0; background-color: #3070B3; color: #fff; border: none;"
+            onmouseover="this.style.backgroundColor='#2563eb';"
+            onmouseout="this.style.backgroundColor='#3070B3';">
+            Play All Videos
+          </button>
+        </div>
         <div class="columns is-centered">
           <div class="column is-half">
             <div class="video-container">
