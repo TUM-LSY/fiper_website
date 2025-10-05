@@ -285,7 +285,7 @@
 
 <!-- ========= Shield animation ========= -->
 <section class="section" id="shield-fans-animated">
-  <div class="container is-max-desktop" style="margin-top: -10em;">
+  <div class="container is-max-desktop" style="margin-top: -14em;">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
         <div class="fans-stage" aria-label="Shield" style="margin-bottom: -7em;">
@@ -299,7 +299,7 @@
           <p class="title is-4"><strong>FIPER</strong></p>
           <p class="subtitle is-5"><u>F</u>a<u>i</u>lure <u>P</u>r<u>e</u>diction at <u>R</u>untime</p>
         </div>
-        <div style="height:5em;"></div>
+        <div style="height:3em;"></div>
       </div>
     </div>
   </div>
@@ -358,7 +358,7 @@
       const wings = document.querySelector('#shield-fans-animated .fans-svg');
       if (!wings) return;
 
-      const START_SCROLL = 100; // px to start fading in
+      const START_SCROLL = 10; // px to start fading in
       const MAX_SCROLL = 1000;  // px to reach full opacity
       const clamp01 = x => Math.max(0, Math.min(1, x));
       const easeOut = x => 1 - Math.pow(1 - x, 3);
@@ -642,13 +642,40 @@
         display: block;
         overflow: hidden;
       }
+      @keyframes wiggle {
+        0% { transform: rotate(0deg);}
+        10% { transform: rotate(-10deg);}
+        20% { transform: rotate(12deg);}
+        30% { transform: rotate(-8deg);}
+        40% { transform: rotate(6deg);}
+        50% { transform: rotate(-4deg);}
+        60% { transform: rotate(2deg);}
+        70% { transform: rotate(-1deg);}
+        80% { transform: rotate(0deg);}
+        100% { transform: rotate(0deg);}
+      }
+      .wiggle {
+        animation: wiggle 0.7s ease-in-out;
+      }
     </style>
     <script>
+      var wiggleInterval;
       document.getElementById('reveal-img').onclick = function() {
         var txt = document.getElementById('reveal-text');
         txt.style.visibility = 'visible';
         txt.style.opacity = '1';
+        if (wiggleInterval) {
+          clearInterval(wiggleInterval);
+        }
       };
+      // Wiggle animation every 5 seconds until text is revealed
+      wiggleInterval = setInterval(function() {
+        var img = document.getElementById('reveal-img');
+        img.classList.add('wiggle');
+        setTimeout(function() {
+          img.classList.remove('wiggle');
+        }, 700);
+      }, 5000);
     </script>
   </div>
 </section>
