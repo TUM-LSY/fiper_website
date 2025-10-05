@@ -751,4 +751,56 @@ a:focus {
 }
 
 
+/* Shield animation */
+/* Shield morph stage */
+.fiper-stage{
+  position: relative;
+  width: 100%;
+  height: clamp(360px, 58vh, 580px);
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+}
 
+/* SVG sits behind the shield */
+.fiper-svg{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 20px rgba(0,149,255,.25));
+}
+
+/* shield and slow ring */
+.fiper-shield-wrap{
+  position: relative;
+  width: clamp(170px, 26vw, 320px);
+  aspect-ratio: 1 / 1.25;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  filter: drop-shadow(0 12px 28px rgba(0,0,0,.45));
+  animation: fiper-float 4.6s ease-in-out infinite;
+}
+@keyframes fiper-float{
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+.fiper-shield{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.fiper-ring{
+  position: absolute;
+  inset: -12%;
+  border: 2px solid hsl(200 100% 55% / 0.25);
+  border-radius: 9999px;
+  animation: fiper-spin 18s linear infinite;
+  opacity: 0;
+}
+@keyframes fiper-spin{ to { transform: rotate(360deg); } }
