@@ -537,9 +537,8 @@
         <div class="columns is-centered">
           <div class="column is-half">
             <div class="video-container hover-controls">
-              <video class="sync-video" width="100%" height="315" preload="metadata"
-                poster="static/videos/thumbnails/rope_success_2120.png" style="background-color: #f0f0f0;"
-                playsinline webkit-playsinline>
+              <video class="sync-video" width="100%" height="315" preload="metadata" muted
+                poster="static/videos/thumbnails/rope_success_2120.png" style="background-color: #f0f0f0;">
                 <source src="static/videos/rope_success_2120.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -548,13 +547,11 @@
           </div>
           <div class="column is-half">
             <div class="video-container hover-controls">
-              <video class="sync-video" width="100%" height="315" preload="metadata"
-                poster="static/videos/thumbnails/rope_failure_2122.png" style="background-color: #f0f0f0;"
-                playsinline webkit-playsinline>
+              <video class="sync-video" width="100%" height="315" preload="metadata" muted
+                poster="static/videos/thumbnails/rope_failure_2122.png" style="background-color: #f0f0f0;">
                 <source src="static/videos/rope_failure_2122.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
-              <p class="has-text-centered" style="color:#E35555; font-weight:bold;">Failure Rollout</p>
               <p class="has-text-centered" style="color:#808080;">(rope does not stay in place)</p>
             </div>
           </div>
@@ -562,26 +559,19 @@
         <div class="columns is-centered">
           <div class="column is-half">
             <div class="video-container hover-controls">
-              <video class="sync-video" width="100%" height="315" preload="metadata"
-                poster="static/videos/thumbnails/rope_success_2121.png" style="background-color: #f0f0f0;"
-                playsinline webkit-playsinline>
+              <video class="sync-video" width="100%" height="315" preload="metadata" muted
+                poster="static/videos/thumbnails/rope_success_2121.png" style="background-color: #f0f0f0;">
                 <source src="static/videos/rope_success_2121.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
-              <p class="has-text-centered" style="color:#5993C3; font-weight:bold;">Success Rollout</p>
-            </div>
           </div>
           <div class="column is-half">
             <div class="video-container hover-controls">
-              <video class="sync-video" width="100%" height="315" preload="metadata"
-                poster="static/videos/thumbnails/rope_failure_2125.png" style="background-color: #f0f0f0;"
-                playsinline webkit-playsinline>
+              <video class="sync-video" width="100%" height="315" preload="metadata" muted
+                poster="static/videos/thumbnails/rope_failure_2125.png" style="background-color: #f0f0f0;">
                 <source src="static/videos/rope_failure_2125.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
-              <p class="has-text-centered" style="color:#E35555; font-weight:bold;">Failure Rollout</p>
-              <p class="has-text-centered" style="color:#808080;">(misplacement and grasp failure)</p>
-            </div>
           </div>
         </div>
         <style>
@@ -643,19 +633,8 @@
         document.getElementById('play-all-videos').onclick = function() {
           var videos = document.querySelectorAll('.sync-video');
           videos.forEach(function(video) {
-            try {
-              video.currentTime = 0;
-              // Attempt to play each video and catch any errors (e.g., due to autoplay restrictions)
-              var playPromise = video.play();
-              if (playPromise !== undefined) {
-                playPromise.catch(function(error) {
-                  // Autoplay was prevented, show controls so user can play manually
-                  video.controls = true;
-                });
-              }
-            } catch (e) {
-              video.controls = true;
-            }
+            video.currentTime = 0;
+            video.play();
           });
         };
         </script>
@@ -825,7 +804,7 @@
               <div class="columns is-centered">
                 <div class="column is-one-quarter has-text-centered">
                   <div class="video-container hover-controls">
-                    <video class="sorting-video" width="100%" height="240" preload="metadata"
+                    <video class="sorting-video" width="100%" height="240" controls preload="metadata"
                       poster="static/videos/thumbnails/sorting_success_id.png" style="background-color: #f0f0f0;"
                       playsinline webkit-playsinline>
                       <source src="static/videos/sorting_success_id.mp4" type="video/mp4">
@@ -837,7 +816,7 @@
                 </div>
                 <div class="column is-one-quarter has-text-centered">
                   <div class="video-container hover-controls">
-                    <video class="sorting-video" width="100%" height="240" preload="metadata"
+                    <video class="sorting-video" width="100%" height="240" controls preload="metadata"
                       poster="static/videos/thumbnails/sorting_success_ood.png" style="background-color: #f0f0f0;"
                       playsinline webkit-playsinline>
                       <source src="static/videos/sorting_success_ood.mp4" type="video/mp4">
@@ -849,7 +828,7 @@
                 </div>
                 <div class="column is-one-quarter has-text-centered">
                   <div class="video-container hover-controls">
-                    <video class="sorting-video" width="100%" height="240" preload="metadata"
+                    <video class="sorting-video" width="100%" height="240" controls preload="metadata"
                       poster="static/videos/thumbnails/sorting_failure_id.png" style="background-color: #f0f0f0;"
                       playsinline webkit-playsinline>
                       <source src="static/videos/sorting_failure_id.mp4" type="video/mp4">
@@ -861,7 +840,7 @@
                 </div>
                 <div class="column is-one-quarter has-text-centered">
                   <div class="video-container hover-controls">
-                    <video class="sorting-video" width="100%" height="240" preload="metadata"
+                    <video class="sorting-video" width="100%" height="240" controls preload="metadata"
                       poster="static/videos/thumbnails/sorting_failure_ood.png" style="background-color: #f0f0f0;"
                       playsinline webkit-playsinline>
                       <source src="static/videos/sorting_failure_ood.mp4" type="video/mp4">
