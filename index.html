@@ -534,13 +534,6 @@
             </a>
           </span>
         </div>
-        <style>
-          @media (max-width: 600px) {
-            .hide-on-mobile {
-              display: none !important;
-            }
-          }
-        </style>
         <div class="columns is-centered">
           <div class="column is-half">
             <div class="video-container hover-controls">
@@ -814,7 +807,8 @@
                 <div class="column is-one-quarter has-text-centered">
                   <div class="video-container hover-controls">
                     <video class="sorting-video" width="100%" height="240" controls preload="metadata"
-                      poster="static/videos/thumbnails/sorting_success_id.png" style="background-color: #f0f0f0;">
+                      poster="static/videos/thumbnails/sorting_success_id.png" style="background-color: #f0f0f0;"
+                      playsinline webkit-playsinline>
                       <source src="static/videos/sorting_success_id.mp4" type="video/mp4">
                       Your browser does not support the video tag.
                     </video>
@@ -825,7 +819,8 @@
                 <div class="column is-one-quarter has-text-centered">
                   <div class="video-container hover-controls">
                     <video class="sorting-video" width="100%" height="240" controls preload="metadata"
-                      poster="static/videos/thumbnails/sorting_success_ood.png" style="background-color: #f0f0f0;">
+                      poster="static/videos/thumbnails/sorting_success_ood.png" style="background-color: #f0f0f0;"
+                      playsinline webkit-playsinline>
                       <source src="static/videos/sorting_success_ood.mp4" type="video/mp4">
                       Your browser does not support the video tag.
                     </video>
@@ -836,7 +831,8 @@
                 <div class="column is-one-quarter has-text-centered">
                   <div class="video-container hover-controls">
                     <video class="sorting-video" width="100%" height="240" controls preload="metadata"
-                      poster="static/videos/thumbnails/sorting_failure_id.png" style="background-color: #f0f0f0;">
+                      poster="static/videos/thumbnails/sorting_failure_id.png" style="background-color: #f0f0f0;"
+                      playsinline webkit-playsinline>
                       <source src="static/videos/sorting_failure_id.mp4" type="video/mp4">
                       Your browser does not support the video tag.
                     </video>
@@ -847,7 +843,8 @@
                 <div class="column is-one-quarter has-text-centered">
                   <div class="video-container hover-controls">
                     <video class="sorting-video" width="100%" height="240" controls preload="metadata"
-                      poster="static/videos/thumbnails/sorting_failure_ood.png" style="background-color: #f0f0f0;">
+                      poster="static/videos/thumbnails/sorting_failure_ood.png" style="background-color: #f0f0f0;"
+                      playsinline webkit-playsinline>
                       <source src="static/videos/sorting_failure_ood.mp4" type="video/mp4">
                       Your browser does not support the video tag.
                     </video>
@@ -855,65 +852,65 @@
                     <p class="has-text-centered" style="color:#808080;">(OOD conditions)</p>
                   </div>
                 </div>
-                </div>
               </div>
-            </div>
-            <style>
-              /* Hide controls by default, show on hover */
-              .hover-controls video::-webkit-media-controls {
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity 0.2s;
-              }
-              .hover-controls:hover video::-webkit-media-controls {
-                opacity: 1;
-                pointer-events: auto;
-              }
-              /* For Firefox */
-              .hover-controls video::-moz-media-controls {
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity 0.2s;
-              }
-              .hover-controls:hover video::-moz-media-controls {
-                opacity: 1;
-                pointer-events: auto;
-              }
-              /* Fallback for browsers that don't support pseudo-elements: hide controls via JS */
-            </style>
-            <script>
-              // Play all sorting videos
-              document.getElementById('play-all-sorting-videos').onclick = function() {
-                var videos = document.querySelectorAll('.sorting-video');
-                videos.forEach(function(video) {
-                  video.currentTime = 0;
-                  video.play();
-                });
-              };
+              </div>
+              </div>
+              <style>
+                /* Hide controls by default, show on hover */
+                .hover-controls video::-webkit-media-controls {
+                  opacity: 0;
+                  pointer-events: none;
+                  transition: opacity 0.2s;
+                }
+                .hover-controls:hover video::-webkit-media-controls {
+                  opacity: 1;
+                  pointer-events: auto;
+                }
+                /* For Firefox */
+                .hover-controls video::-moz-media-controls {
+                  opacity: 0;
+                  pointer-events: none;
+                  transition: opacity 0.2s;
+                }
+                .hover-controls:hover video::-moz-media-controls {
+                  opacity: 1;
+                  pointer-events: auto;
+                }
+                /* Fallback for browsers that don't support pseudo-elements: hide controls via JS */
+              </style>
+              <script>
+                // Play all sorting videos
+                document.getElementById('play-all-sorting-videos').onclick = function() {
+                  var videos = document.querySelectorAll('.sorting-video');
+                  videos.forEach(function(video) {
+                    video.currentTime = 0;
+                    video.play();
+                  });
+                };
 
-              // JS fallback for hiding controls if pseudo-elements are not supported
-              document.querySelectorAll('.hover-controls video').forEach(function(video) {
-                video.controls = false;
-                video.parentElement.addEventListener('mouseenter', function() {
-                  video.controls = true;
-                });
-                video.parentElement.addEventListener('mouseleave', function() {
-                  if (!video.paused && !video.ended) return; // keep controls if playing
+                // JS fallback for hiding controls if pseudo-elements are not supported
+                document.querySelectorAll('.hover-controls video').forEach(function(video) {
                   video.controls = false;
+                  video.parentElement.addEventListener('mouseenter', function() {
+                    video.controls = true;
+                  });
+                  video.parentElement.addEventListener('mouseleave', function() {
+                    if (!video.paused && !video.ended) return; // keep controls if playing
+                    video.controls = false;
+                  });
                 });
-              });
-            </script>
-          </section>
-        </div>
-        <script>
-          document.getElementById('show-more-videos-btn').onclick = function() {
-            var extra = document.getElementById('extra-videos');
-            extra.style.display = 'block';
-            this.style.display = 'none';
-            // Optionally scroll to the new content
-            extra.scrollIntoView({behavior: 'smooth'});
-          };
-        </script>
+              </script>
+              </section>
+              </div>
+              <script>
+                document.getElementById('show-more-videos-btn').onclick = function() {
+                  var extra = document.getElementById('extra-videos');
+                  extra.style.display = 'block';
+                  this.style.display = 'none';
+                  // Optionally scroll to the new content
+                  extra.scrollIntoView({behavior: 'smooth'});
+                };
+              </script>
       </div>
     </div>
   </div>
