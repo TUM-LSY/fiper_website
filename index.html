@@ -643,8 +643,19 @@
         document.getElementById('play-all-videos').onclick = function() {
           var videos = document.querySelectorAll('.sync-video');
           videos.forEach(function(video) {
-            video.currentTime = 0;
-            video.play();
+            try {
+              video.currentTime = 0;
+              // Attempt to play each video and catch any errors (e.g., due to autoplay restrictions)
+              var playPromise = video.play();
+              if (playPromise !== undefined) {
+                playPromise.catch(function(error) {
+                  // Autoplay was prevented, show controls so user can play manually
+                  video.controls = true;
+                });
+              }
+            } catch (e) {
+              video.controls = true;
+            }
           });
         };
         </script>
@@ -814,7 +825,7 @@
               <div class="columns is-centered">
                 <div class="column is-one-quarter has-text-centered">
                   <div class="video-container hover-controls">
-                    <video class="sorting-video" width="100%" height="240" controls preload="metadata"
+                    <video class="sorting-video" width="100%" height="240" preload="metadata"
                       poster="static/videos/thumbnails/sorting_success_id.png" style="background-color: #f0f0f0;"
                       playsinline webkit-playsinline>
                       <source src="static/videos/sorting_success_id.mp4" type="video/mp4">
@@ -826,7 +837,7 @@
                 </div>
                 <div class="column is-one-quarter has-text-centered">
                   <div class="video-container hover-controls">
-                    <video class="sorting-video" width="100%" height="240" controls preload="metadata"
+                    <video class="sorting-video" width="100%" height="240" preload="metadata"
                       poster="static/videos/thumbnails/sorting_success_ood.png" style="background-color: #f0f0f0;"
                       playsinline webkit-playsinline>
                       <source src="static/videos/sorting_success_ood.mp4" type="video/mp4">
@@ -838,7 +849,7 @@
                 </div>
                 <div class="column is-one-quarter has-text-centered">
                   <div class="video-container hover-controls">
-                    <video class="sorting-video" width="100%" height="240" controls preload="metadata"
+                    <video class="sorting-video" width="100%" height="240" preload="metadata"
                       poster="static/videos/thumbnails/sorting_failure_id.png" style="background-color: #f0f0f0;"
                       playsinline webkit-playsinline>
                       <source src="static/videos/sorting_failure_id.mp4" type="video/mp4">
@@ -850,7 +861,7 @@
                 </div>
                 <div class="column is-one-quarter has-text-centered">
                   <div class="video-container hover-controls">
-                    <video class="sorting-video" width="100%" height="240" controls preload="metadata"
+                    <video class="sorting-video" width="100%" height="240" preload="metadata"
                       poster="static/videos/thumbnails/sorting_failure_ood.png" style="background-color: #f0f0f0;"
                       playsinline webkit-playsinline>
                       <source src="static/videos/sorting_failure_ood.mp4" type="video/mp4">
