@@ -394,7 +394,7 @@
         <div class="content has-text-justified">
           <!-- TODO: Replace with your paper abstract -->
           <p>
-            We introduce FIPER (Failure Prediction at Runtime), a lightweight, model-agnostic framework that predicts failures of generative imitation-learning (IL) robot policies early and without using failure data. FIPER combines (i) Random Network Distillation in the policy’s observation embedding (RND-OE) with (ii) Action-Chunk Entropy (ACE) computed from batched policy samples. Both scores are statistically calibrated via conformal prediction on a small set of successful rollouts and aggregated over short time windows. A failure alarm is raised iff both calibrated scores exceed their time-varying thresholds. We evaluate our framework in five simulation and real-world environments where various types of failures can occur. Our results show that FIPER better distinguishes true failures from OOD situations and predicts failures earlier and more accurately than existing methods. We thus consider FIPER an important step towards more interpretable and safer generative robot policies.
+            We introduce FIPER (Failure Prediction at Runtime), a lightweight, model-agnostic framework that predicts failures of generative imitation-learning robot policies early and without using failure data. FIPER combines (i) Random Network Distillation in the observation embedding space of the policy (RND-OE) with (ii) Action-Chunk Entropy (ACE) computed from generated action chunk batches. Both scores are statistically calibrated via conformal prediction on a small set of successful rollouts and aggregated over short time windows. A failure alarm is raised iff both calibrated scores exceed their thresholds. We evaluate our framework in five simulation and real-world environments where various types of failures can occur. Our results show that FIPER better distinguishes true failures from OOD situations and predicts failures earlier and more accurately than existing methods. We thus consider FIPER an important step towards more interpretable and safer generative robot policies.
           </p>
         </div>
       </div>
@@ -412,16 +412,16 @@
         <div class="content has-text-justified">
           <!-- Text -->
           <p>
-            Recent advances in generative imitation learning (IL) robot policies have enabled robots to solve increasingly complex tasks. However, safe deployment remains challenging:
+            Recent advances in imitation learning with generative policies (diffusion, flow matching) have enabled robots to solve increasingly complex tasks. However, safe deployment remains challenging:
             <ul>
-              <li>Unpredictable policy failures can arise from distribution shifts or compounding errors.</li>
+              <li>Distribution shifts or compounding errors can cause unpredictable and erratic behavior, leading to task failures.</li>
               <li>Existing methods either:
                 <ul>
-                  <li>Flag any OOD observation/action (<strong>high false alarms</strong>)</li>
-                  <li>Use VLMs to retroactively detect failure (<strong>too late</strong>)</li>
-                  <li>Rely on existing failure data (often unsafe/impractical to collect)</li>
-                  <li>Use policy inputs only or outputs only, missing crucial cues</li>
-                  <li>Fail to account for the multi-modal action capabilities of generative policies</li>
+                  <li>Flag any OOD observation/action (<strong>many false alarms</strong>)</li>
+                  <li>Use VLMs to retrospectively detect failures (<strong>too late</strong>)</li>
+                  <li>Rely on the existence of failure data (<strong>unsafe/impractical to collect</strong>)</li>
+                  <li>Use only policy inputs or outputs alone, missing crucial correlations</li>
+                  <li>Fail to account for the multi-modal action distributions of generative policies</li>
                 </ul>
               </li>
             </ul>
@@ -475,12 +475,13 @@
         <div class="content has-text-justified">
           <!-- Text -->
           <p>
-            FIPER predicts policy failures during runtime by combining two complementary indicators:
+            The design of FIPER is motivated by the insight that failures typically involve unfamiliar observations and ambiguous actions. 
+            Therefore, FIPER predicts policy failures during runtime by combining two complementary indicators:
             <ul>
               <li><strong>Observation-Based Score (RND-OE):</strong> Random Network Distillation applied in the policy’s own observation embedding space detects when current observations deviate from those seen in successful rollouts. Applying RND to the observation embeddings instead of raw observations improves robustness to irrelevant distribution shifts.</li>
-              <li><strong>Action Chunk Entropy (ACE):</strong> Batched action sequences are evaluated via a novel entropy score in end-effector space, capturing persistent ambiguity in the robot’s intended behavior. Our proposed score is both computationally lightweight and effective at handling multi-modal action distributions.</li>
+              <li><strong>Action Chunk Entropy (ACE):</strong> The uncertainty in a batch of action chunks is quantified via a novel entropy score in end-effector space, capturing persistent ambiguity in the robot’s intended behavior. Our proposed score is both computationally lightweight and effective at handling multi-modal action distributions.</li>
             </ul>
-            Both scores are aggregated over short <strong>moving windows</strong> and calibrated with <strong>conformal prediction</strong> using only a small number of successful trajectories. A failure is flagged only when both indicators exceed their individual thresholds, yielding early and robust prediction while avoiding false alarms on benign out-of-distribution states.
+            Both scores are aggregated over short <strong>moving windows</strong> and calibrated with <strong>conformal prediction</strong> using only a small number of successful trajectories. A failure alarm is raised only when both indicators exceed their respective thresholds, yielding early and robust prediction while avoiding false alarms on benign OOD states.
           </p>
         </div>
       </div>
@@ -499,7 +500,7 @@
         <div class="content has-text-justified">
           <!-- Text -->
           <p>
-            We evaluate FIPER across five diverse tasks using both diffusion- and flow-based policies. Calibration relies only on a small set of successful rollouts (50 in simulation, 10 in real-world). Across all environments, FIPER consistently predicts failures earlier and more accurately than observation-only or action-only baselines. By combining calibrated embedding-space novelty with action-space entropy, it offers a practical mechanism for safer deployment of generative robot policies.
+            We evaluate FIPER across five diverse tasks using both diffusion- and flow-based policies. Calibration relies only on a small set of successful rollouts (50 in simulation, 10 in the real world). Across all environments, FIPER consistently predicts failures earlier and more accurately than baselines, highlighting its potential to enhance uncertainty quantification and safety of diffusion- and flow-based policies.
           </p>
         </div>
         <img src="static/images/task_overview_sim.png" alt="Task Overview 1" style="width:100%; height:auto; display:block;">
@@ -518,7 +519,7 @@
         <div class="content has-text-justified">
           <!-- Text -->
           <p>
-            In the videos below, we show example rollouts of our real-world rope manipulation task. The left column shows successful rollouts where the robot is able to successfully form a pretzel, while the right column shows failure cases where the robot fails to grasp the rope or the rope does not stay in place. <strong>As soon as FIPER predicts a failure, the frame around the video turns red.</strong>
+            The videos below show example rollouts of our real-world rope manipulation task. The left column contains successful rollouts where the robot manages to form a pretzel, while the right column shows failure cases where the robot fails to grasp the rope or the rope does not stay in place. <strong>As soon as FIPER predicts a failure, the frame around the video turns red.</strong>
           </p>
         </div>
         <div style="display: flex; justify-content: center;">
@@ -933,11 +934,11 @@
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
           <ul>
-            <li>FIPER predicts failures of generative robot policies at runtime <strong>without requiring failure data</strong>.</li>
-            <li>Combines observation-based and action-based indicators for <strong>fast and robust</strong> failure prediction.</li>
-            <li>Uses <strong>conformal prediction</strong> to provide statistical guarantees on prediction performance.</li>
-            <li>Calibrated using <strong>only a small number of successful rollouts</strong>, enabling deployment without access to policy training data.</li>
-            <li>Outperforms existing methods in distinguishing <strong>true failures from out-of-distribution situations</strong>.</li>
+            <li>FIPER predicts failures of generative robot policies at runtime <strong>without requiring failure data</strong>,</li>
+            <li>combines observation-based and action-based indicators for <strong>fast and robust</strong> failure prediction,</li>
+            <li>uses <strong>conformal prediction</strong> to provide statistical guarantees on prediction performance,</li>
+            <li>does <strong>not require access to the policy's training data</strong> and is calibrated using only a small number of successful rollouts,</li>
+            <li>outperforms existing methods in <strong>distinguishing true failures from out-of-distribution situations</strong>.</li>
           </ul>
         </div>
       </div>
@@ -1014,12 +1015,12 @@
             <span class="copy-text">Copy</span>
           </button>
         </div>
-        <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-          title={Your Paper Title Here},
-          author={First Author and Second Author and Third Author},
-          journal={Conference/Journal Name},
-          year={2024},
-          url={https://your-domain.com/your-project-page}
+        <pre id="bibtex-code"><code>@inproceedings{romer2025fiper,
+          title={Failure Prediction at Runtime for Generative Robot Policies},
+          author={Ralf R\"o"mer and Adrian Kobras and Luca Worbis and Angela P. Schoellig},
+          journal={Advances in Neural Information Processing Systems (NeurIPS)},
+          year={2025},
+          url={https://tum-lsy.github.io/fiper_website/}
         }</code></pre>
       </div>
     </div>
