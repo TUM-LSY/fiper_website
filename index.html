@@ -406,7 +406,20 @@
         <div class="content has-text-justified">
           <!-- TODO: Replace with your paper abstract -->
           <p>
-            We introduce FIPER (Failure Prediction at Runtime), a lightweight, model-agnostic framework that predicts failures of generative imitation-learning robot policies early and without using failure data. FIPER combines (i) Random Network Distillation in the observation embedding space of the policy (RND-OE) with (ii) Action-Chunk Entropy (ACE) computed from generated action chunk batches. Both scores are statistically calibrated via conformal prediction on a small set of successful rollouts and aggregated over short time windows. A failure alarm is raised iff both calibrated scores exceed their thresholds. We evaluate our framework in five simulation and real-world environments where various types of failures can occur. Our results show that FIPER better distinguishes true failures from OOD situations and predicts failures earlier and more accurately than existing methods. We thus consider FIPER an important step towards more interpretable and safer generative robot policies.
+            We propose FIPER, a general framework for
+            <u>F</u>a<u>i</u>lure <u>P</u>r<u>e</u>diction at <u>R</u>untime for generative 
+            imitation learning policies without requiring failure data.
+            FIPER combines (i) random network distillation (RND) for out-of-distribution (OOD) detection 
+            in the policy’s observation embedding space and
+            (ii) a novel action chunk entropy (ACE) score for quantifying uncertainty in the
+            conditional action distribution. Both failure prediction scores are calibrated on a
+            small set of successful rollouts using conformal prediction and aggregated over
+            short time windows. A failure alarm is triggered when both indicators exceed their
+            respective thresholds. We evaluate FIPER across five simulation and real-world
+            environments involving diverse failure modes. Results show that FIPER better
+            distinguishes actual failures from benign OOD situations and predicts failures more
+            accurately and earlier than existing approaches. We thus consider FIPER an important 
+            step towards more interpretable and safer generative robot policies.
           </p>
         </div>
       </div>
