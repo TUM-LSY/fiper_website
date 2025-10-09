@@ -522,7 +522,7 @@
         <div class="content has-text-justified">
           <!-- Text -->
           <p>
-            We evaluate FIPER across five diverse tasks using both diffusion- and flow-based policies. Calibration relies only on a small set of successful rollouts (50 in simulation, 10 in the real world). Across all environments, FIPER consistently predicts failures earlier and more accurately than baselines, highlighting its potential to enhance uncertainty quantification and safety of diffusion- and flow-based policies.
+            We evaluate FIPER across five diverse tasks using both diffusion- and flow-based policies. Calibration relies only on a small set of successful rollouts (50 in simulation, 10 in the real world). Across all environments, FIPER consistently predicts failures earlier and more accurately than baselines, highlighting its potential to enhance uncertainty quantification and safety of generative robot policies.
           </p>
         </div>
         <img src="static/images/task_overview_sim.png" alt="Task Overview 1" style="width:100%; height:auto; display:block;">
@@ -541,7 +541,7 @@
         <div class="content has-text-justified">
           <!-- Text -->
           <p>
-            The videos below show example rollouts of our real-world rope manipulation task. The left column contains successful rollouts where the robot manages to form a pretzel, while the right column shows failure cases where the robot fails to grasp the rope or the rope does not stay in place. <strong>As soon as FIPER predicts a failure, the frame around the video turns red.</strong>
+            The videos below show example rollouts of our real-world rope manipulation task (10x). The left column shows successful rollouts where the robot manages to form a pretzel, while the right column shows failure cases where the robot fails to grasp the rope or the rope does not stay in place. <strong>As soon as FIPER predicts a failure, the frame around the video turns red.</strong>
           </p>
         </div>
         <div style="display: flex; justify-content: center;">
@@ -688,6 +688,7 @@
                   accurate failure prediction requires differentiating between out-of-distribution (OOD) situations to which the policy
                   can generalize and actual failures. In the PushT environment, OOD conditions are created by
                   varying the scale and dimensions of the T-object. Notably, the polilcy can also fail under in-distribution (ID) conditions.
+                  Compared to baselines, our scores <strong> RND-OE and ACE better distinguish true failures from OOD situations the policy can generalize to</strong>.
                 </p>
               </div>
               <div style="display: flex; justify-content: center; margin-bottom: 1em;">
@@ -960,7 +961,7 @@
             <li>combines observation-based and action-based indicators for <strong>fast and robust</strong> failure prediction,</li>
             <li>uses <strong>conformal prediction</strong> to provide statistical guarantees on prediction performance,</li>
             <li>does <strong>not require access to the policy's training data</strong> and is calibrated using only a small number of successful rollouts,</li>
-            <li>outperforms existing methods in <strong>distinguishing true failures from out-of-distribution situations</strong>.</li>
+            <li>outperforms existing methods in <strong>distinguishing true failures from out-of-distribution situations</strong> the policy can generalize to.</li>
           </ul>
         </div>
       </div>
