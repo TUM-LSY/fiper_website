@@ -381,14 +381,18 @@
       const START_SCROLL = 10; // px to start fading in
       const clamp01 = x => Math.max(0, Math.min(1, x));
       const easeOut = x => 1 - Math.pow(1 - x, 3);
+      let baseViewportHeight = window.innerHeight;
+      let lastWidth = window.innerWidth;
       const setViewportUnit = () => {
         const vh = window.innerHeight * 0.01;
         root.style.setProperty('--vh', `${vh}px`);
+        baseViewportHeight = window.innerHeight;
+        lastWidth = window.innerWidth;
       };
 
       function update(){
         const scrollY = window.scrollY || 0;
-        const maxScroll = window.innerHeight * 0.7;  // relative to the screen height in px
+        const maxScroll = baseViewportHeight * 0.7;  // relative to the initial screen height in px
         const progress = (scrollY - START_SCROLL) / (maxScroll - START_SCROLL);
         const t = clamp01(progress);
         wings.style.opacity = easeOut(t).toFixed(2);
@@ -396,8 +400,17 @@
 
       window.addEventListener('scroll', () => requestAnimationFrame(update), { passive:true });
       window.addEventListener('resize', () => {
-        setViewportUnit();
+        const width = window.innerWidth;
+        if (Math.abs(width - lastWidth) > 40) {
+          setViewportUnit();
+        }
         requestAnimationFrame(update);
+      }, { passive:true });
+      window.addEventListener('orientationchange', () => {
+        setTimeout(() => {
+          setViewportUnit();
+          requestAnimationFrame(update);
+        }, 200);
       }, { passive:true });
       setViewportUnit();
       update(); // initial paint
