@@ -375,6 +375,11 @@
       100%{transform:translateY(0)}
     }
     @keyframes ringSpin{ to{ transform: rotate(360deg); } }
+    @media (max-width: 900px) and (orientation: landscape) {
+      #shield-fans-animated .fans-svg {
+        display: none;
+      }
+    }
   </style>
 
   <script>
