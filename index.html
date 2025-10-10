@@ -229,7 +229,7 @@
 
               <div class="is-size-5 publication-authors">
                 <span class="author-block"><sup>1</sup> Learning Systems and Robotics Lab, Technical University of Munich</span>
-                <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                <span class="eql-cntrb"><small><br><sup>*</sup>Equal Contribution</small></span>
               </div>
 
               <div class="is-flex is-justify-content-center is-align-items-center" style="gap: 0.5em; margin: 1em 0;">
@@ -327,7 +327,7 @@
     #shield-fans-animated .fans-stage{
       position: relative;
       width: 100%;
-      height: clamp(360px, 58vh, 600px);
+      height: clamp(360px, calc(var(--vh, 1vh) * 58), 600px);
       display: grid;
       place-items: center;
       isolation: isolate;
@@ -374,23 +374,32 @@
 
   <script>
     (function(){
+      const root = document.documentElement;
       const wings = document.querySelector('#shield-fans-animated .fans-svg');
       if (!wings) return;
 
       const START_SCROLL = 10; // px to start fading in
-      const MAX_SCROLL = 1000;  // px to reach full opacity
       const clamp01 = x => Math.max(0, Math.min(1, x));
       const easeOut = x => 1 - Math.pow(1 - x, 3);
+      const setViewportUnit = () => {
+        const vh = window.innerHeight * 0.01;
+        root.style.setProperty('--vh', `${vh}px`);
+      };
 
       function update(){
         const scrollY = window.scrollY || 0;
-        const progress = (scrollY - START_SCROLL) / (MAX_SCROLL - START_SCROLL);
+        const maxScroll = window.innerHeight * 0.7;  // relative to the screen height in px
+        const progress = (scrollY - START_SCROLL) / (maxScroll - START_SCROLL);
         const t = clamp01(progress);
         wings.style.opacity = easeOut(t).toFixed(2);
       }
 
       window.addEventListener('scroll', () => requestAnimationFrame(update), { passive:true });
-      window.addEventListener('resize', () => requestAnimationFrame(update), { passive:true });
+      window.addEventListener('resize', () => {
+        setViewportUnit();
+        requestAnimationFrame(update);
+      }, { passive:true });
+      setViewportUnit();
       update(); // initial paint
     })();
   </script>
@@ -409,16 +418,16 @@
             We propose FIPER, a general framework for
             <u>F</u>a<u>i</u>lure <u>P</u>r<u>e</u>diction at <u>R</u>untime for generative 
             imitation learning policies without requiring failure data.
-            FIPER combines (i) random network distillation (RND) for out-of-distribution (OOD) detection 
+            FIPER combines (i) <strong>random network distillation (RND)</strong> for out-of-distribution (OOD) detection 
             in the policy’s observation embedding space and
-            (ii) a novel action chunk entropy (ACE) score for quantifying uncertainty in the
+            (ii) a novel <strong>action chunk entropy (ACE)</strong> score for quantifying uncertainty in the
             conditional action distribution. Both failure prediction scores are calibrated on a
-            small set of successful rollouts using conformal prediction and aggregated over
+            small set of successful rollouts using <strong>conformal prediction</strong> and aggregated over
             short time windows. A failure alarm is triggered when both indicators exceed their
             respective thresholds. We evaluate FIPER across five simulation and real-world
             environments involving diverse failure modes. Results show that FIPER better
-            distinguishes actual failures from benign OOD situations and predicts failures more
-            accurately and earlier than existing approaches. We thus consider FIPER an important 
+            <strong>distinguishes actual failures from benign OOD situations</strong> and predicts failures <strong>more
+            accurately and earlier</strong> than existing approaches. We thus consider FIPER an important
             step towards more interpretable and safer generative robot policies.
           </p>
         </div>
