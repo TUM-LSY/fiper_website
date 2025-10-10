@@ -299,7 +299,7 @@
 <section class="section" id="shield-fans-animated">
   <div class="container is-max-desktop" style="margin-top: -14em;">
     <style>
-      @media (max-width: 600px) {
+      @media (max-width: 600px) and (orientation: portrait) {
         #shield-fans-animated .container.is-max-desktop {
           margin-top: -10em !important;
         }
@@ -383,7 +383,7 @@
       const shield = document.querySelector('#shield-fans-animated .shield');
       const shieldY = shield ? shield.getBoundingClientRect().top + window.scrollY : 0;
       const START_SCROLL = Math.max(0, shieldY - window.innerHeight);
-      
+
       const clamp01 = x => Math.max(0, Math.min(1, x));
       const easeOut = x => 1 - Math.pow(1 - x, 3);
       let baseViewportHeight = window.innerHeight;
@@ -455,10 +455,10 @@
       <img src="static/images/robot_pretzel_above.png" alt="Right Side Image" style="max-width: 120px; height: auto;">
     </div>
     <style>
-    @media (max-width: 600px) {
+    @media (max-width: 600px), (max-width: 900px) and (orientation: landscape) {
       .robot-pretzel-img {
-        justify-content: center !important;
-        margin: 0 !important;
+      justify-content: center !important;
+      margin: 0 !important;
       }
     }
     </style>
