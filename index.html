@@ -378,7 +378,12 @@
       const wings = document.querySelector('#shield-fans-animated .fans-svg');
       if (!wings) return;
 
-      const START_SCROLL = 10; // px to start fading in
+      // Use a larger START_SCROLL on mobile to avoid premature fade-in
+      // START_SCROLL = y position of shield_only.svg - screen height
+      const shield = document.querySelector('#shield-fans-animated .shield');
+      const shieldY = shield ? shield.getBoundingClientRect().top + window.scrollY : 0;
+      const START_SCROLL = Math.max(0, shieldY - window.innerHeight);
+      
       const clamp01 = x => Math.max(0, Math.min(1, x));
       const easeOut = x => 1 - Math.pow(1 - x, 3);
       let baseViewportHeight = window.innerHeight;
