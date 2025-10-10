@@ -688,17 +688,24 @@
           pointer-events: auto;
         }
         @media screen and (max-width: 900px) and (orientation: landscape) {
-          .landscape-grid[data-landscape-columns="2"] .column {
+          .landscape-grid {
+            display: flex !important;
+            flex-wrap: nowrap !important;
+          }
+          .landscape-grid[data-landscape-columns="2"] > .column {
             flex: 0 0 50% !important;
             max-width: 50% !important;
+            width: 50% !important;
           }
-          .landscape-grid[data-landscape-columns="3"] .column {
+          .landscape-grid[data-landscape-columns="3"] > .column {
             flex: 0 0 33.3333% !important;
             max-width: 33.3333% !important;
+            width: 33.3333% !important;
           }
-          .landscape-grid[data-landscape-columns="4"] .column {
+          .landscape-grid[data-landscape-columns="4"] > .column {
             flex: 0 0 25% !important;
             max-width: 25% !important;
+            width: 25% !important;
           }
         }
         </style>
