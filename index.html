@@ -1131,18 +1131,37 @@
 
         </div>
         <!-- Visitor Counter -->
-        <!-- Visitor Counter -->
-        <div id="visitor-count" style="text-align:center; margin-top:-1.25em; margin-bottom:-2.25em; font-size:0.9em; color:#999; opacity:0; transition:opacity 0.4s ease;">
-          Visitors: <span id="count">0</span>
+        <div id="visitor-count"
+             style="text-align:center; margin-top:-1.25em; margin-bottom:-2.25em; font-size:0.9em; color:#999; opacity:0; transition:opacity 0.3s;">
+          Visitors: <span id="count">–</span>
         </div>
         <script>
-        fetch('https://api.countapi.xyz/hit/tum-lsy/fiper_website')
-          .then(res => res.json())
-          .then(data => {
-            const counter = document.getElementById('visitor-count');
-            document.getElementById('count').textContent = data.value.toLocaleString();
-            counter.style.opacity = '1';
-          });
+(async () => {
+  const container = document.getElementById("visitor-count");
+  const span = document.getElementById("count");
+  const url = "https://hitscounter.dev/api/hit?output=json&url=https%3A%2F%2Ftum-lsy.github.io%2Ffiper_website%2F&label=Visitors&icon=arrow-right-circle-fill&color=%236ea8fe&message=&style=for-the-badge&tz=Europe%2FBerlin";
+  try {
+    const res = await fetch(url, { cache: "no-store", headers: { "Accept": "application/json" } });
+    const data = await res.json();
+    let val = null;
+    if (data) {
+      if (typeof data.total_hits === "number") val = data.total_hits;
+      else if (typeof data.today_hits === "number") val = data.today_hits;
+      else if (typeof data.count === "number") val = data.count;
+    }
+    if (typeof val === "number" && !Number.isNaN(val)) {
+      span.textContent = val.toLocaleString();
+      container.style.opacity = "1";
+    } else {
+      span.textContent = "n/a";
+      container.style.opacity = "1";
+    }
+  } catch (e) {
+    span.textContent = "error";
+    container.style.opacity = "1";
+    console.error("Visitor counter error:", e);
+  }
+})();
         </script>
       </div>
     </div>
