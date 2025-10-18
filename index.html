@@ -1117,7 +1117,7 @@
 <!--End BibTex citation -->
 
 
-  <footer class="footer">
+<footer class="footer">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths content">
@@ -1130,16 +1130,24 @@
           </p>
 
         </div>
+        <!-- Visitor Counter -->
+        <!-- Visitor Counter -->
+        <div id="visitor-count" style="text-align:center; margin-top:-1.25em; margin-bottom:-2.25em; font-size:0.9em; color:#999; opacity:0; transition:opacity 0.4s ease;">
+          Visitors: <span id="count">0</span>
+        </div>
+        <script>
+        fetch('https://api.countapi.xyz/hit/tum-lsy/fiper_website')
+          .then(res => res.json())
+          .then(data => {
+            const counter = document.getElementById('visitor-count');
+            document.getElementById('count').textContent = data.value.toLocaleString();
+            counter.style.opacity = '1';
+          });
+        </script>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+</body>
+</html>
